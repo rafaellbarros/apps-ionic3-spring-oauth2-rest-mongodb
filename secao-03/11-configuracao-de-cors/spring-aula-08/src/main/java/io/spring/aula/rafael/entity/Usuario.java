@@ -34,10 +34,10 @@ public class Usuario {
         this.perfis = usuario.getPerfis();
     }
 
-    public Usuario(String nome, List<Perfil> perfis, String email, String senha) {
+    public Usuario(String nome, String email, String senha ,List<Perfil> perfis) {
         this.nome = nome;
-        this.perfis = perfis;
         this.email = email;
         this.senha = senha;
+        this.perfis = perfis;
     }
 }

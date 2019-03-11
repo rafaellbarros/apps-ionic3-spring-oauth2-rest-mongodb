@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import io.spring.aula.rafael.service.MyUserDetailService;
+import io.spring.aula.rafael.service.MeuUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -18,7 +18,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     
     
     @Autowired
-    private MyUserDetailService userDetailService;
+    private MeuUserDetailsService userDetailService;
     
     @Override
     protected void configure (AuthenticationManagerBuilder authenticationManagerBuilder)throws Exception{
