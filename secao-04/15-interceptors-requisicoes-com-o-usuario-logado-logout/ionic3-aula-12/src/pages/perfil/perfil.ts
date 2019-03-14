@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { LoginServiceProvider } from '../../providers/login-service/login-service';
+import { Perfil } from '../../entity/Perfil';
 import { PerfilServiceProvider } from './../../providers/perfil-service/perfil-service';
 
 /**
@@ -15,13 +15,22 @@ import { PerfilServiceProvider } from './../../providers/perfil-service/perfil-s
   selector: 'page-perfil',
   templateUrl: 'perfil.html',
 })
-export class PerfilPage {
-  public perfis: any;
-  constructor(public navCtrl: NavController, public perfilService:PerfilServiceProvider, private loginService: LoginServiceProvider) {
-    
-    const token = this.loginService.getToken();
-    this.perfilService.getPerfis(token).subscribe(resp =>  this.perfis = resp);
-      
+export class PerfilPage implements OnInit {
+
+  public perfis: Perfil[];
+  
+  constructor(
+    public navCtrl: NavController, 
+    private _perfilService:PerfilServiceProvider) {
+  
+  }
+
+  ngOnInit(): void {
+    this.buscarPefis();
+  }
+
+  private buscarPefis() {
+    this._perfilService.buscarPerfis.subscribe(perfis => this.perfis = perfis);
   }
 
 }

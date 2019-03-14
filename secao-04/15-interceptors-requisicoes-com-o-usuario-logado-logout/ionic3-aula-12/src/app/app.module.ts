@@ -1,25 +1,25 @@
 
-import { PerfilPage } from './../pages/perfil/perfil';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { ComponentInicial } from './app.component';
-
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { CookieService } from 'ngx-cookie-service';
+import { Utils } from '../entity/Utils';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-import { CookieService } from 'ngx-cookie-service';
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoginServiceProvider } from '../providers/login-service/login-service';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Utils } from '../entity/Utils';
 import { LoginPageModule } from '../pages/login/login.module';
-import { PerfilServiceProvider } from '../providers/perfil-service/perfil-service';
 import { PerfilPageModule } from '../pages/perfil/perfil.module';
+import { TabsPage } from '../pages/tabs/tabs';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { HttpServiceInterceptor } from '../providers/http.service.interceptor';
+import { LoginServiceProvider } from '../providers/login-service/login-service';
+import { PerfilServiceProvider } from '../providers/perfil-service/perfil-service';
+import { ComponentInicial } from './app.component';
+
+
 
 @NgModule({
   declarations: [
@@ -56,7 +56,8 @@ import { HttpServiceInterceptor } from '../providers/http.service.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: HttpServiceInterceptor,
       multi: true
-    }
+    },
+    AuthServiceProvider
   ]
 })
 export class AppModule {}

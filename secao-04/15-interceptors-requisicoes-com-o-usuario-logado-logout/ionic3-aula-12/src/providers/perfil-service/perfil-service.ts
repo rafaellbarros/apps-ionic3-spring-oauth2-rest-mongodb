@@ -1,6 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Perfil } from '../../entity/Perfil';
 import { Utils } from '../../entity/Utils';
+import { AuthServiceProvider } from './../auth-service/auth-service';
 
 /*
   Generated class for the PerfilServiceProvider provider.
@@ -11,17 +15,16 @@ import { Utils } from '../../entity/Utils';
 @Injectable()
 export class PerfilServiceProvider {
 
-  private perfilUrl: string;
+  private _perfilUrl: string;
   public handleError: any;
 
-  constructor(public http: HttpClient) {
-    this.perfilUrl = `${Utils.urlBackEnd}/perfil`;
-
+  constructor(private http: HttpClient, private _auth: AuthServiceProvider) {
+    this._perfilUrl = `${Utils.urlBackEnd}/perfil`;
   }
 
-  public getPerfis(token) {
-    const headers = new HttpHeaders().set("Authorization", "Bearer " + token);
-    return this.http.get(this.perfilUrl, {headers});
+  public get buscarPerfis(): Observable<Perfil[]> {
+    return this.http.get<Perfil[]>(this._perfilUrl, this._auth.optionsAuthorizationBearerToken)
+      .pipe(map(perfis => perfis));
   }
 
 }

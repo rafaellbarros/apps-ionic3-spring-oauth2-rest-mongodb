@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { LoginServiceProvider } from './../../providers/login-service/login-service';
+import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 
 @Component({
   selector: 'page-home',
@@ -11,12 +11,12 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    public loginService: LoginServiceProvider) {
+    public _auth: AuthServiceProvider) {
 
   }
 
   public logout() {
-    this.loginService.logout();
+    this._auth.logout();
     this.navCtrl.setRoot(LoginPage);
   }
 

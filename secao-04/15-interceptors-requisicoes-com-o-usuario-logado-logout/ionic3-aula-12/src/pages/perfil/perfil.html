@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="perfis">
     <ion-list-header>Perfis</ion-list-header>
     <ion-item *ngFor="let perfil of perfis">
       <ion-icon name="ionic" item-left></ion-icon>
