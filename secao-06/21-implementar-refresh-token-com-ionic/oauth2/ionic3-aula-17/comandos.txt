@@ -1,0 +1,8 @@
+# adicionando o projeto para web
+cordova platform add browser
+
+# preprando o projeto
+cordova prepare
+
+# builder para web
+cordova build browser
