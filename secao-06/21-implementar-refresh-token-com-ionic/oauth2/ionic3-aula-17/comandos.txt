@@ -1,8 +1,8 @@
 # adicionando o projeto para web
-cordova platform add browser
+ionic cordova platform add browser
 
 # preprando o projeto
-cordova prepare
+ionic cordova prepare browser
 
 # builder para web
-cordova build browser
+ionic cordova build browser

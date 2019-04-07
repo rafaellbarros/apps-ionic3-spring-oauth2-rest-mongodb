@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { Perfil } from '../../entity/Perfil';
 import { PerfilServiceProvider } from './../../providers/perfil-service/perfil-service';
